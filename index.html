@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>タイマー（ストップウォッチ/カウントダウン）</title>
+  <link rel="icon" href="timer.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap" id="panel">
+    <header>
+      <img class="app-icon" src="timer.jpg" alt="タイマーアイコン" width="24" height="24" decoding="async" />
+      <h1>タイマー</h1>
+      <div class="mode" role="tablist" aria-label="モード選択">
+        <div class="seg"><input type="radio" id="m-sw" name="mode" value="stopwatch"><label for="m-sw">ストップウォッチ</label></div>
+        <div class="seg"><input type="radio" id="m-cd" name="mode" value="countdown" checked><label for="m-cd">カウントダウン</label></div>
+      </div>
+    </header>
+
+    <div class="display" id="display">00:00.00</div>
+    <div class="sub" id="status">待機中</div>
+
+    <div class="cd-inputs" id="cdInputs">
+      <div class="time-input"><input id="min" type="number" min="0" max="999" value="0" inputmode="numeric" /> <span>分</span></div>
+      <div class="time-input"><input id="sec" type="number" min="0" max="59" value="30" inputmode="numeric" /> <span>秒</span></div>
+      <button id="preset5" type="button" title="5分に設定">5分</button>
+    </div>
+
+    <div class="buttons">
+      <button id="startPause" class="paused">開始</button>
+      <button id="reset" disabled>リセット</button>
+      <button id="lap" disabled>ラップ</button>
+    </div>
+
+    <div class="laps" id="laps" aria-live="polite" aria-label="ラップ一覧"></div>
+    <div class="hint">スペース: 開始/一時停止 · R: リセット · L: ラップ</div>
+  </main>
+
+  <script src="script.js"></script>
+  </body>
+  </html>

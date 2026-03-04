@@ -1,0 +1,15 @@
+# OS / Editor
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Node (念のため)
+node_modules/
+dist/
+build/
+
+# Env / misc
+.env
+.env.*
+

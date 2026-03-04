@@ -1,0 +1,88 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --accent: #22c55e;
+  --accent-2: #3b82f6;
+  --danger: #ef4444;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; background: radial-gradient(1200px 800px at 20% -10%, #1e293b 0%, #0b1020 50%, #0a0d1a 100%), var(--bg);
+  color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  display: grid; place-items: center; padding: 24px;
+}
+.wrap {
+  width: min(720px, 92vw); background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
+  border: 1px solid rgba(255,255,255,.08); border-radius: 16px; box-shadow: var(--shadow);
+  padding: 20px 20px 16px;
+  backdrop-filter: blur(6px);
+}
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+header h1 { font-size: 18px; font-weight: 600; margin: 0; letter-spacing: .02em; color: #f1f5f9; }
+.app-icon { width: 24px; height: 24px; border-radius: 6px; object-fit: cover; box-shadow: 0 1px 2px rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.1); }
+.mode {
+  display: inline-flex; gap: 8px; background: #0b1222; border: 1px solid rgba(255,255,255,.08);
+  padding: 6px; border-radius: 999px;
+}
+.seg { position: relative; }
+.seg input { display: none; }
+.seg label {
+  display: inline-block; padding: 6px 14px; border-radius: 999px; color: var(--muted); cursor: pointer; user-select: none; font-size: 13px;
+}
+.seg input:checked + label { background: #0f1a33; color: #e2e8f0; border: 1px solid rgba(255,255,255,.08); }
+
+.display {
+  font-variant-numeric: tabular-nums; text-align: center; letter-spacing: .04em;
+  font-weight: 700; line-height: 1; margin: 14px 0 6px;
+  font-size: clamp(44px, 12vw, 86px);
+  color: #f8fafc; text-shadow: 0 2px 18px rgba(59,130,246,.18);
+}
+.sub {
+  text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 10px;
+}
+
+.cd-inputs {
+  display: flex; align-items: center; justify-content: center; gap: 10px; margin: 8px 0 6px; flex-wrap: wrap;
+}
+.cd-inputs.hidden { display: none; }
+.time-input {
+  display: flex; align-items: center; gap: 6px; background: #0b1222; border: 1px solid rgba(255,255,255,.08);
+  padding: 8px 10px; border-radius: 10px; color: #e2e8f0;
+}
+.time-input input {
+  width: 80px; background: transparent; border: none; outline: none; color: #e2e8f0; font-size: 16px; text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.time-input span { color: var(--muted); font-size: 13px; }
+
+.buttons {
+  display: flex; gap: 10px; justify-content: center; margin: 14px 0 8px; flex-wrap: wrap;
+}
+button {
+  appearance: none; border: 1px solid rgba(255,255,255,.08); background: #0b1222; color: #e2e8f0;
+  padding: 10px 16px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform .03s ease, background .2s ease, border-color .2s ease;
+}
+button:active { transform: translateY(1px); }
+#startPause { background: linear-gradient(180deg, rgba(34,197,94,.18), rgba(34,197,94,.08)); border-color: rgba(34,197,94,.35); }
+#startPause.paused { background: linear-gradient(180deg, rgba(59,130,246,.18), rgba(59,130,246,.08)); border-color: rgba(59,130,246,.35); }
+#reset { background: linear-gradient(180deg, rgba(239,68,68,.12), rgba(239,68,68,.06)); border-color: rgba(239,68,68,.35); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+
+.laps {
+  margin: 8px 0 0; max-height: 200px; overflow: auto; padding: 0 6px;
+}
+.lap { display: flex; justify-content: space-between; gap: 12px; padding: 8px 10px; border-bottom: 1px dashed rgba(255,255,255,.06); font-variant-numeric: tabular-nums; font-size: 13px; color: #e2e8f0; }
+.lap .idx { color: var(--muted); width: 48px; }
+
+.hint { text-align: center; color: var(--muted); font-size: 12px; margin-top: 8px; }
+.flash { animation: flash .2s alternate 5; }
+@keyframes flash { from { background-color: transparent; } to { background-color: rgba(239,68,68,.25); } }
+
+@media (max-width: 420px) {
+  .time-input input { width: 64px; }
+  .lap { font-size: 12px; }
+}
